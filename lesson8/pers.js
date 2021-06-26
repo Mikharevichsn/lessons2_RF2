@@ -1,16 +1,12 @@
-const pers = {
+const hunter = {
     money: 300,
-    checkCanBye(price) {
-        // console.log(this);
-        return this.money >= price;
-    },
-    getHowManyCanBue(price) {
-        if (price > this.money) return 0;
-        return Math.floor(this.money / price);
-    },
 }
 
-// console.log(pers.checkCanBye(1000));
+const knight ={
+    money: 100,
+}
+
+// console.log(hunter.checkCanBye(1000));
 
 
 const shop = [
@@ -19,14 +15,25 @@ const shop = [
     {name: 'Кинжал', damage: 13, price: 300},
 ];
 
-const display = (checkPrice, getCount) => {
+function checkCanBye(price) {
+    // console.log(this);
+    return this.money >= price;
+};
+
+function getHowManyCanBue(price) {
+    if (price > this.money) return 0;
+    return Math.floor(this.money / price);
+}
+
+
+const display = (pers) => {
     let resStr = '';
     for (let item of shop) {
-        const itemByeStr = checkPrice(item.price) ? `могу купить ${getCount(item.price)} штук` : `недостаточно золота`;
+        const itemByeStr = checkCanBye.call(pers, item.price) ? `могу купить ${getHowManyCanBue.call(pers, item.price)} штук` : `недостаточно золота`;
         resStr += `${item.name} ${itemByeStr}\n`;
     }
     return resStr;
 }
 
-const { checkCanBye, getHowManyCanBue } = pers;
-console.log(display(checkCanBye.bind(pers), getHowManyCanBue.bind(pers)));
+console.log(display(hunter));
+console.log(display(knight));

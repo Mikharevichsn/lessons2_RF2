@@ -25,15 +25,22 @@
 // -----
 
 // scope chaining
-const a = 1000;
+// const a = 1000;
 
-const func = () => {
-    const a = 2000;
-    return () => {
-        const a = 3000;
-        console.log(a);
-    }
-}
+// const func = () => {
+//     const a = 2000;
+//     return () => {
+//         const a = 3000;
+//         console.log(a);
+//     }
+// }
 
 
-func()();
+// func()();
+
+// ------
+// Самовызывающаяся функция 
+// IIFE 
+
+// (() => {console.log(123)})();
+
